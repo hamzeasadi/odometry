@@ -13,6 +13,12 @@ import pandas as pd
 
 
 
+
+
+
+
+
+
 class Dict2class:
     """
     convert dictionary to python class attributes
@@ -23,7 +29,7 @@ class Dict2class:
         docs
 
         """
-
+        self.data = data
         for ky, val in data.items():
             setattr(self, ky, self._xch(val))
 
@@ -45,6 +51,8 @@ class Dict2class:
 
 
 
+
+
 class XRepresentation:
     """
     exchange the data representation:
@@ -55,16 +63,22 @@ class XRepresentation:
     """
 
     def json2dict(self, json_path:str):
-        with open(json_path, "r") as json_file:
+        """docs"""
+        with open(json_path, "r", encoding="utf-8") as json_file:
             dict_file = json.load(json_file)
         return dict_file
-    
+
     def json2cls(self, json_path:str):
+        """docs"""
         dict_file = self.json2dict(json_path=json_path)
         return Dict2class(data=dict_file)
 
     def dict2cls(self, data:Dict):
+        """docs"""
         return Dict2class(data=data)
+
+
+
 
 
 
@@ -73,9 +87,15 @@ class XRepresentation:
 if __name__ == "__main__":
     print(__file__)
 
-    x = 5
-    # y =  "{:0>{}}".format(x, 2)
-    y = f"{x:0>2}"
-    print(y)
+    x = dict(a=123, d="hamzeh", c=dict(z=345, f=12))
+    
+    xcls = Dict2class(x)
+
+    for a in xcls:
+        print(a)
+
+  
+
+    
 
 
