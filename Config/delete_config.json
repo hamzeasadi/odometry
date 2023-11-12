@@ -1,7 +1,0 @@
-{
-    "sample_size": 10,
-    "drop_rate": 0.2,
-    "last_drop": true,
-    "num_samples": 100,
-    "parent_config": null
-}

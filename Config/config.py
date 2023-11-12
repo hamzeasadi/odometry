@@ -21,7 +21,7 @@ class Paths:
     model:str = os.path.join(data, "model")
     result:str = os.path.join(data, "result")
 
-    config:str = os.path.join(root, "Config")
+    config:str = os.path.join(data, "config")
 
     @staticmethod
     def crtdir(path):

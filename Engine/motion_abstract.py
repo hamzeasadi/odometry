@@ -6,14 +6,10 @@ import os
 from typing import Any
 from abc import ABCMeta
 from abc import abstractmethod
+from typing import Optional
+from typing import Dict
 
-
-
-
-
-# class MotionData:
-#     points:np.
-
+import numpy as np
 
 
 
@@ -109,6 +105,64 @@ class MotionAbstract(metaclass=ABCMeta):
         """
         calculate the motion between two images
         """
+
+
+
+
+class MotionEstimationAbstract(metaclass=ABCMeta):
+    """
+    calculate the motion between two frame
+    
+    """
+
+    @abstractmethod
+    def init_feature_extractor(self, config_name:Optional[str:Dict]=None):
+        """
+        intialize an featuer extractor for motion estimation pipeline
+        args:
+            config_name: the configuration for the feature extractor
+        """
+
+
+    # @abstractmethod
+    # def init_matcher(self, config_name:Optional[str:Dict]=None):
+    #     """
+    #     intialize an featuer matcher for motion estimation pipeline
+    #     args:
+    #         config_name: the configuration for the feature matcher
+    #     """
+
+    # @abstractmethod
+    # def get_featuers(self, img:np.ndarray):
+    #     """
+    #     gt the featuers from input image
+    #     args:
+    #         img: an image in numpy format 
+    #     """
+    
+    # @abstractmethod
+    # def get_match(self, feat0, feat1):
+    #     """
+    #     calculate the feature matches between two set of featuers
+    #     args:
+    #         feat0: featuers descriptors of the first image
+    #         feat1: featuers descriptors of the second image
+        
+    #     return:
+    #         matching points
+    #     """
+
+
+    # def get_motion(self, img0:np.ndarray, img1:np.ndarray):
+    #     """
+    #     calculate the motion between two frames
+    #     args:
+    #         img0: first frame
+    #         img1: second frame
+        
+    #     return:
+    #         motion matrix
+    #     """
 
 
 

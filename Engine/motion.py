@@ -5,13 +5,17 @@ motion module for motion estimation and management
 
 
 import os
-from typing import Any
+from typing import Any, Dict, Optional
 # from collections import deque
+import cv2
 
-from Engine.motion_abstract import MotionQueuAbstract
-# from Engine.motion_abstract import MotionData
-# from Engine.motion_abstract import MotionQueuAbstract
 
+from Engine.motion_abstract import (
+                                    MotionQueuAbstract,
+                                    MotionEstimationAbstract
+                                    )
+from Config.config import Paths
+from Utils.gutils import XRepresentation
 
 
 
@@ -125,6 +129,21 @@ class MotionQueue(MotionQueuAbstract):
 
 
 
+class MotionEstimation(MotionEstimationAbstract):
+
+    def __init__(self, motion_estimate_config:str, paths:Paths):
+        self.paths = paths
+        self.detector = self.init_feature_extractor()
+
+
+    def init_feature_extractor(self, config_name: Any | None = None):
+        
+        sift = cv2.SIFT_create()
+
+        return sift
+
+
+    
 
 
 
@@ -136,13 +155,16 @@ class MotionQueue(MotionQueuAbstract):
 
 def main():
     """docs"""
-    print(__file__)
 
-    mq = MotionQueue(mq_size=10)
+    img_path = "/home/hasadi/project/Dataset/kitti/dataset/sequences/00/image_0/000000.png"
+    
+    # motion_estimate = MotionEstimation(motion_estimate_config="motion_estimation_config.json", paths=Paths())
+    
+    # img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
 
-    for i in range(11):
-        mq.push((i+1)*2)
-        print(f"front={mq.front} rear={mq.rear} size={mq.get_occupied_size()} value = {mq.get_value(i-1)}")
+    # print(img.shape)
+
+
 
 
  
@@ -156,3 +178,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -25,10 +25,22 @@ class FrameDelet:
     def __init__(self, delete_config:str, seq_info:Dict, paths:Paths) -> None:
         self.seq_info = seq_info
         xpresentation = XRepresentation()
-        self.delete_config = xpresentation.json2dict(os.path.join(paths.config, delete_config))
+        self.delete_config = xpresentation.json2cls(os.path.join(paths.config, delete_config))
 
-    def get_samples(self, num_samples:Optional[int]=None):
-        pass
+
+    def get_sample(self, intial_point:int, start_point:int, sample_size:int, num_drops:int, last_drop:bool):
+        """
+        return one sample from a sequence
+        args:
+            intial_point: intial frame to calculate othe frames motion based on
+            start_point: first frame of sample
+            sample_size: the size of sample (#frames for evaluation)
+            last_drop: if true drop the last frame as manipulation
+        returns:
+            a sequence of motions [(i, j), (i, j+1), (i, j+2), ...]
+        """
+
+        
 
                 
 

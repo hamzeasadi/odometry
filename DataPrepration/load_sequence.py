@@ -82,7 +82,7 @@ class KittiLoad(LoadData):
 
     def get_sequence_info(self, seq_num:int)->Dict:
         """
-        docs
+        general meta data about the sequence
         """
         seq_name = f"{seq_num:0>2}"
         sequenc_path = os.path.join(self.dataset_path.sequences, seq_name)
@@ -167,8 +167,11 @@ def main():
     print(__file__)
     kitti_loader = KittiLoad(dataset_path=KitiPaths(), camera="left")
 
-    tss = kitti_loader.load_calib_seq_cam(0)
+    tss = kitti_loader.load_calib_seq_cam(seq_num=0)
     print(tss)
 
 if __name__ == "__main__":
     main()
+
+
+
