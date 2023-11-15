@@ -58,3 +58,19 @@ class Device:
         self.cpu = "cpu"
         self.gpu = "cuda"
 
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    """
+    docs
+    """
+
+    paths = Paths()
+    paths_dict = paths.__dict__
+    for path_name in paths_dict:
+        paths.crtdir(paths_dict[path_name])

@@ -116,7 +116,7 @@ class MotionEstimationAbstract(metaclass=ABCMeta):
     """
 
     @abstractmethod
-    def init_feature_extractor(self, config_name:Optional[str:Dict]=None):
+    def init_feature_extractor(self, config_name:Dict=None):
         """
         intialize an featuer extractor for motion estimation pipeline
         args:
@@ -124,45 +124,46 @@ class MotionEstimationAbstract(metaclass=ABCMeta):
         """
 
 
-    # @abstractmethod
-    # def init_matcher(self, config_name:Optional[str:Dict]=None):
-    #     """
-    #     intialize an featuer matcher for motion estimation pipeline
-    #     args:
-    #         config_name: the configuration for the feature matcher
-    #     """
+    @abstractmethod
+    def init_matcher(self, config_name:str|Dict=None):
+        """
+        intialize an featuer matcher for motion estimation pipeline
+        args:
+            config_name: the configuration for the feature matcher
+        """
 
-    # @abstractmethod
-    # def get_featuers(self, img:np.ndarray):
-    #     """
-    #     gt the featuers from input image
-    #     args:
-    #         img: an image in numpy format 
-    #     """
+    @abstractmethod
+    def get_featuers(self, img:np.ndarray):
+        """
+        gt the featuers from input image
+        args:
+            img: an image in numpy format 
+        """
     
-    # @abstractmethod
-    # def get_match(self, feat0, feat1):
-    #     """
-    #     calculate the feature matches between two set of featuers
-    #     args:
-    #         feat0: featuers descriptors of the first image
-    #         feat1: featuers descriptors of the second image
+    @abstractmethod
+    def get_match(self, feat0, feat1):
+        """
+        calculate the feature matches between two set of featuers
+        args:
+            feat0: featuers descriptors of the first image
+            feat1: featuers descriptors of the second image
         
-    #     return:
-    #         matching points
-    #     """
+        return:
+            matching points
+        """
 
 
-    # def get_motion(self, img0:np.ndarray, img1:np.ndarray):
-    #     """
-    #     calculate the motion between two frames
-    #     args:
-    #         img0: first frame
-    #         img1: second frame
+    def get_motion(self, img0:np.ndarray, img1:np.ndarray, K:np.ndarray=np.eye(3)):
+        """
+        calculate the motion between two frames
+        args:
+            img0: first frame
+            img1: second frame
+            K: intrisinc matrix 3x3
         
-    #     return:
-    #         motion matrix
-    #     """
+        return:
+            motion matrix
+        """
 
 
 
